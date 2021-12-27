@@ -17,8 +17,6 @@ class OptionsMenu extends MusicBeatState
 	var selector:FlxText;
 	var curSelected:Int = 0;
 
-
-	
 	var controlsStrings:Array<String> = [];
 
 	private var grpControls:FlxTypedGroup<Alphabet>;
@@ -50,7 +48,7 @@ class OptionsMenu extends MusicBeatState
 				// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 			}
 		 */
-		 
+		
 		#if mobileC
 		addVirtualPad(UP_DOWN, A_B);
 		#end
@@ -63,7 +61,6 @@ class OptionsMenu extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-	}
 
 		/* 
 			if (controls.ACCEPT)
@@ -107,7 +104,7 @@ class OptionsMenu extends MusicBeatState
 	function changeSelection(change:Int = 0)
 	{
 		#if !switch
-		NGio.logEvent('Fresh');
+		//NGio.logEvent('Fresh');
 		#end
 
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
@@ -138,4 +135,4 @@ class OptionsMenu extends MusicBeatState
 			}
 		}
 	}
-
+}
