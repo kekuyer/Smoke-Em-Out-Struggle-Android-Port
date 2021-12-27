@@ -23,7 +23,6 @@ class OptionsMenu extends MusicBeatState
             new About("about android port")
 		])
 
-        ];
 	
 	var controlsStrings:Array<String> = [];
 
@@ -144,4 +143,4 @@ class OptionsMenu extends MusicBeatState
 			}
 		}
 	}
-}
+
