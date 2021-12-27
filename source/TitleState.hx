@@ -47,7 +47,7 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-	    #if android
+	        #if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
 		
@@ -69,6 +69,7 @@ class TitleState extends MusicBeatState
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
 		Highscore.load();
+                data.startData();
 
 		if (FlxG.save.data.weekUnlocked != null)
 		{
