@@ -16,7 +16,7 @@ class OptionsMenu extends MusicBeatState
 {
 	var selector:FlxText;
 	var curSelected:Int = 0;
-
+	
 	var controlsStrings:Array<String> = [];
 
 	private var grpControls:FlxTypedGroup<Alphabet>;
@@ -48,7 +48,7 @@ class OptionsMenu extends MusicBeatState
 				// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 			}
 		 */
-		
+		 
 		#if mobileC
 		addVirtualPad(UP_DOWN, A_B);
 		#end
@@ -61,6 +61,38 @@ class OptionsMenu extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		if (controls.ACCEPT)
+		{
+			var daSelected:String = menuItems[curSelected];
+
+			switch (daSelected)
+			{
+				case "preferences":
+					FlxG.switchState(new options.PreferencesState());
+				case "controls":
+					FlxG.switchState(new options.CustomControlsState());
+				case "about":
+					FlxG.switchState(new options.AboutState());
+				case "exit":
+					FlxG.switchState(new MainMenuState());
+				case "discord":
+					FlxG.openURL('https://discord.gg/eGwJnUvZ9H');
+				case "special thanks":
+					FlxG.switchState(new options.CreditState());
+					//FlxG.openURL('https://youtu.be/2IdJzGZ70r4');
+			}
+		}
+
+		if (controls.BACK #if android || FlxG.android.justReleased.BACK #end) {
+			FlxG.switchState(new MainMenuState());
+		}
+
+		if (controls.UP_P)
+			changeSelection(-1);
+		if (controls.DOWN_P)
+			changeSelection(1);
+
+	}
 
 		/* 
 			if (controls.ACCEPT)
@@ -103,9 +135,6 @@ class OptionsMenu extends MusicBeatState
 
 	function changeSelection(change:Int = 0)
 	{
-		#if !switch
-		//NGio.logEvent('Fresh');
-		#end
 
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 
