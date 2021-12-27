@@ -16,14 +16,6 @@ class OptionsMenu extends MusicBeatState
 {
 	var selector:FlxText;
 	var curSelected:Int = 0;
-	
-	var options:Array<OptionCategory> = [
-	    new OptionCategory("Mobile settings", [
-			new CustomControls("edit a control"),
-            new About("about android port")
-		])
-		
-	];
 
 	var controlsStrings:Array<String> = [];
 
