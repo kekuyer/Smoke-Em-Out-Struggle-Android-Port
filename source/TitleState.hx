@@ -27,7 +27,6 @@ import flixel.util.FlxTimer;
 //import io.newgrounds.NG;
 import lime.app.Application;
 import openfl.Assets;
-import utils.AndroidData;
 
 using StringTools;
 
@@ -40,7 +39,6 @@ class TitleState extends MusicBeatState
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
-        var data:AndroidData = new AndroidData();
 
 	var curWacky:Array<String> = [];
 
@@ -48,7 +46,7 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-	        #if android
+	    #if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
 		
@@ -70,9 +68,7 @@ class TitleState extends MusicBeatState
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
 		Highscore.load();
-                data.startData();
 
-		if (FlxG.save.data.weekUnlocked != null)
 		{
 			// FIX LATER!!!
 			// WEEK UNLOCK PROGRESSION!!
