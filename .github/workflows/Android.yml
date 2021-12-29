@@ -1,8 +1,5 @@
 # This is a basic workflow to help you get started with Actions
 
-# Based on Kade engine ci
-# Made by luckydog7 for https://github.com/luckydog7/Funkin-android
-
 name: Android Build CI
 
 # Controls when the workflow will run
@@ -21,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: krdlab/setup-haxe@v1
         with:
-          haxe-version: 4.2.2
+          haxe-version: 4.2.3
           
       - name: Cache haxelib path
         uses: actions/cache@v2
@@ -36,7 +33,7 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v2.3.1
         with:
-          distribution: 'zulu' # See 'Supported distributions' for available options
+          distribution: 'zulu'
           java-version: '11'
         
       - uses: nttld/setup-ndk@v1
@@ -52,8 +49,6 @@ jobs:
           haxelib install openfl --quiet
           haxelib install flixel 4.9.0 --quiet
           haxelib install hxcpp --quiet
-          haxelib run lime setup flixel
-          haxelib remove flixel-addons --quiet
           haxelib run lime setup
           haxelib run lime config ANDROID_SDK $ANDROID_SDK_ROOT
           haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_ROOT
@@ -66,12 +61,15 @@ jobs:
           haxelib git faxe https://github.com/uhrobots/faxe --quiet
           haxelib git polymod https://github.com/MasterEric/polymod.git --quiet
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc --quiet
-          haxelib git linc_luajit https://github.com/MasterEric/linc_luajit.git --quiet
-          haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit.git --quiet 
+          haxelib git extension-webm https://github.com/luckydog7/extension-webm --quiet
+          haxelib git linc_luajit https://github.com/Daninnocent/linc_luajit.git --quiet
+          haxelib install actuate 
           haxelib list
           
       - name: funni build logs
-        run: haxelib run lime build android -Dci
+        run: |
+          haxelib run lime setup android
+          haxelib run lime build android -Dci
           
       - uses: actions/upload-artifact@v2
         with:
