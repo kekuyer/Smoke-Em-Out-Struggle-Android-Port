@@ -1,6 +1,6 @@
 # Smoke 'Em Out Struggle Android Port
 
-This is the repository for the Friday Night Funkin' Mod "Smoke 'Em Out Struggle Android Port" Original mod by Rageminer & atsuover.
+This is the repository for the Friday Night Funkin' Mod Android Port of "Smoke 'Em Out Struggle" mod. Original mod by Rageminer & atsuover.
 
 This is the android port of the mod. You can ever download this or peek inside.
 
